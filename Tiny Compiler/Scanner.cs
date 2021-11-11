@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Text.RegularExpressions;
 public enum Token_Class
 {
     Int, Float, String, Read, Write, Repeat, Until, If, Else, ElseIf, Then, Return, Endl,
@@ -128,7 +128,8 @@ namespace Tiny_Compiler
 
 
             //Is it an identifier?
-
+            if (isIdentifier(Lex))
+                Tokens.Add(Tok);
 
             //Is it a Constant?
 
@@ -143,7 +144,9 @@ namespace Tiny_Compiler
         {
             bool isValid = true;
             // Check if the lex is an identifier or not.
+            var rgIdentifier = new Regex("^[a-zA-Z](a-zA-Z0-9)*S");
 
+            isValid = rgIdentifier.IsMatch(lex);
             return isValid;
         }
         bool isConstant(string lex)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+b8OFXHWlh+wihrYVkRAFUAgtRMY94/fLdxG8zBN4a0HtY58QMICGrrDh4fl+C7wJlzswj339ghI2uyrgQlRQ==",
+  "dgSpecHash": "W6L5J3YdhDFqyXtLnudvuUdp7+/ebMGQeC5ponDqBiuaq26oKuynwnGfH0eBH5SR8R/e1dQnrSN9C+8GeqJbkQ==",
   "success": true,
-  "projectFilePath": "D:\\Programing\\Visual Studio\\Tiny Compiler\\Tiny Compiler\\Tiny Compiler.csproj",
+  "projectFilePath": "D:\\FCIS\\4thYear\\Tiny_Compiler\\Tiny Compiler\\Tiny Compiler.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
