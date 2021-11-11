@@ -25,6 +25,7 @@ namespace Tiny_Compiler
 
     public class Scanner
     {
+     
         public List<Token> Tokens = new List<Token>();
         Dictionary<string, Token_Class> ReservedWords = new Dictionary<string, Token_Class>();
         Dictionary<string, Token_Class> Operators = new Dictionary<string, Token_Class>();
@@ -84,7 +85,7 @@ namespace Tiny_Compiler
 
                 if (isLetter(CurrentChar))//if you read a Letter
                 {
-                    while( j+1 <SourceCode.Length && ! isWhiteSpace(SourceCode[j+1]) )
+                    while( j+1 <SourceCode.Length &&  (isDigit(SourceCode[j+1]) || isLetter(SourceCode[j+1]) ) )
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
@@ -95,7 +96,7 @@ namespace Tiny_Compiler
 
                 else if (isDigit(CurrentChar))
                 {
-                    while (j+1 < SourceCode.Length && !isWhiteSpace(SourceCode[j+1]))
+                    while (j+1 < SourceCode.Length && isDigit(SourceCode[j+1]))
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
@@ -175,8 +176,7 @@ namespace Tiny_Compiler
             return new Regex("^[0-9]+([.][0-9]+)?$").IsMatch(lex);
         }
 
-        bool isString(string lex)
-        {
+        bool isString(string lex){
             return new Regex("^[\"][^\"]+[\"]$").IsMatch(lex);
         }
 
