@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
 public enum Token_Class
 {
     Int, Float, String, Read, Write, Repeat, Until, If, Else, ElseIf, Then, Return, Endl,
@@ -26,7 +28,7 @@ namespace Tiny_Compiler
         public List<Token> Tokens = new List<Token>();
         Dictionary<string, Token_Class> ReservedWords = new Dictionary<string, Token_Class>();
         Dictionary<string, Token_Class> Operators = new Dictionary<string, Token_Class>();
-        Stack<char> bracket = new Stack<char>();
+        //Stack<char> bracket = new Stack<char>();
         public Scanner()
         {
             ReservedWords.Add("IF", Token_Class.If);
@@ -73,19 +75,19 @@ namespace Tiny_Compiler
         {
             for (int i = 0; i < SourceCode.Length; i++)
             {
-                int j = i + 1;
+                int j = i;
                 char CurrentChar = SourceCode[i];
                 string CurrentLexeme = CurrentChar.ToString();
 
                 if (isWhiteSpace(CurrentChar))
                     continue;
 
-                if (isChar(CurrentChar))//if you read a character
+                if (isLetter(CurrentChar))//if you read a Letter
                 {
-                    while(j<SourceCode.Length && (isChar(SourceCode[j]) || isDigit(SourceCode[j])) )
+                    while( j+1 <SourceCode.Length && ! isWhiteSpace(SourceCode[j+1]) )
                     {
-                        CurrentLexeme += SourceCode[j];
                         j++;
+                        CurrentLexeme += SourceCode[j];
                     }
                     i = j;
                     FindTokenClass(CurrentLexeme);
@@ -93,27 +95,34 @@ namespace Tiny_Compiler
 
                 else if (isDigit(CurrentChar))
                 {
-                    while (j < SourceCode.Length && SourceCode[j]>='0' && SourceCode[j]<= '9')
+                    while (j+1 < SourceCode.Length && !isWhiteSpace(SourceCode[j+1]))
                     {
-                        CurrentLexeme += SourceCode[j];
                         j++;
+                        CurrentLexeme += SourceCode[j];
                     }
                     i = j;
                     FindTokenClass(CurrentLexeme);
-                }
-                else if(CurrentChar == '(' || CurrentChar =='{')
-                {
-                    bracket.Push(CurrentChar);
+
                 }
 
-                /*else if (CurrentChar == '/' && j+1<SourceCode.Length && SourceCode[j+1] == '*')
+                else if(CurrentChar=='"')
                 {
-                    j+=2;
-                    while(SourceCode[j] != '*')
-                }*/
+                    while (j + 1 < SourceCode.Length && SourceCode[j+1]!='\n')
+                    {
+                        j++;
+                        CurrentLexeme += SourceCode[j];
+
+                        if (SourceCode[j] == '"') break;
+                    }
+
+                    i = j;
+                    FindTokenClass(CurrentLexeme);
+
+                }
+
                 else
                 {
-
+                    FindTokenClass(CurrentLexeme);
                 }
             }
 
@@ -121,54 +130,65 @@ namespace Tiny_Compiler
         }
         void FindTokenClass(string Lex)
         {
+
             Token_Class TC;
             Token Tok = new Token();
             Tok.lex = Lex;
-            //Is it a reserved word?
 
+            //Is it a reserved word?
+            if (ReservedWords.ContainsKey(Lex))
+                Tok.token_type = ReservedWords[Lex];
 
             //Is it an identifier?
-            if (isIdentifier(Lex))
-                Tokens.Add(Tok);
+            else if (isIdentifier(Lex))
+                Tok.token_type = Token_Class.Idenifier;
 
             //Is it a Constant?
+            else if (isConstant(Lex))
+                Tok.token_type = Token_Class.Constant;
 
             //Is it an operator?
+            else if (Operators.ContainsKey(Lex))
+                Tok.token_type = Operators[Lex];
 
+            //Is it a String?
+            else if (isString(Lex))
+                Tok.token_type = Token_Class.String;
+
+            else
+            {
+                Errors.Error_List.Add(Lex + " is undefined");
+                return;
+            }
             //Is it an undefined?
+
+            Tokens.Add(Tok);
         }
 
 
 
-        bool isIdentifier(string lex)
-        {
-            bool isValid = true;
-            // Check if the lex is an identifier or not.
-            var rgIdentifier = new Regex("^[a-zA-Z](a-zA-Z0-9)*S");
-
-            isValid = rgIdentifier.IsMatch(lex);
-            return isValid;
-        }
-        bool isConstant(string lex)
-        {
-            bool isValid = true;
-            // Check if the lex is a constant (Number) or not.
-
-            return isValid;
+        bool isIdentifier(string lex){
+            return new Regex("^[a-zA-Z]([a-zA-Z0-9])*$").IsMatch(lex);
         }
 
-        bool isWhiteSpace(char character)
+        bool isConstant(string lex){
+            return new Regex("^[0-9]+([.][0-9]+)?$").IsMatch(lex);
+        }
+
+        bool isString(string lex)
         {
+            return new Regex("^[\"][^\"]+[\"]$").IsMatch(lex);
+        }
+
+        bool isWhiteSpace(char character){
             return character == ' ' || character == '\r' || character == '\n';
         }
 
-        bool isChar(char character)
-        {
-            return (character >= 'A' && character <= 'Z') || (character >= 'z' && character <= 'z');
+        bool isLetter(char character){
+            return (character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z');
         }
 
-        bool isDigit(char character)
-        {
+        bool isDigit(char character){
             return character >= '0' && character <= '9';
         }
     }

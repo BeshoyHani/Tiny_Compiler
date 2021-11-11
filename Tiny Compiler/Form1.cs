@@ -17,6 +17,53 @@ namespace Tiny_Compiler
             InitializeComponent();
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+
+            //string Code=textBox1.Text.ToLower();
+            string Code = textBox1.Text;
+            TinyCompiler.Start_Compiling(Code);
+
+            //   PrintLexemes();
+
+            PrintTokens();
+
+            //   PrintErrors();
+
+            PrintErrors();
+        }
+
+        void PrintTokens()
+        {
+            foreach (Token token in  TinyCompiler.Jason_Scanner.Tokens)
+            {
+                dataGridView1.Rows.Add(token.lex, token.token_type);
+            }
+        }
+
+        void PrintErrors()
+        {
+            for (int i = 0; i < Errors.Error_List.Count; i++)
+            {
+                textBox2.Text += Errors.Error_List[i];
+                textBox2.Text += "\r\n";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        void ClearAll()
+        {
+            textBox2.Clear();
+            dataGridView1.Rows.Clear();
+            TinyCompiler.Jason_Scanner.Tokens.Clear();
+            Errors.Error_List.Clear();
+        }
+        
+
     }
 }
