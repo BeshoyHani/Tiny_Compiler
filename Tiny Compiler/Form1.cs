@@ -36,7 +36,7 @@ namespace Tiny_Compiler
 
         void PrintTokens()
         {
-            foreach (Token token in  TinyCompiler.Jason_Scanner.Tokens)
+            foreach (Token token in  TinyCompiler.tiny_Scanner.Tokens)
             {
                 dataGridView1.Rows.Add(token.lex, token.token_type);
             }
@@ -60,7 +60,7 @@ namespace Tiny_Compiler
         {
             textBox2.Clear();
             dataGridView1.Rows.Clear();
-            TinyCompiler.Jason_Scanner.Tokens.Clear();
+            TinyCompiler.tiny_Scanner.Tokens.Clear();
             Errors.Error_List.Clear();
         }
         

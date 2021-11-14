@@ -13,3 +13,19 @@ D:\FCIS\4thYear\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compile
 D:\FCIS\4thYear\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
 D:\FCIS\4thYear\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
 D:\FCIS\4thYear\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.exe
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.deps.json
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.json
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.dev.json
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.dll
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.pdb
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.AssemblyReference.cache
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny_Compiler.Form1.resources
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.GenerateResource.cache
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfoInputs.cache
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfo.cs
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CoreCompileInputs.cache
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
+D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
