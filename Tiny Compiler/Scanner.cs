@@ -149,6 +149,8 @@ namespace Tiny_Compiler
                 }
             }
 
+            TinyCompiler.TokenStream = Tokens;
+
         }
         void FindTokenClass(string Lex)
         {
@@ -206,7 +208,8 @@ namespace Tiny_Compiler
 
         bool isComment(string lex)
         {
-            return new Regex("^/[*].*[*]/$").IsMatch(lex);
+            MessageBox.Show(lex);
+            return new Regex(@"/\*[\s\S]*?\*/").IsMatch(lex);
             //@"^(/\*).*(\*\/)$"
         }
 
