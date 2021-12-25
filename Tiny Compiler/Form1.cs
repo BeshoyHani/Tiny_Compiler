@@ -29,7 +29,8 @@ namespace Tiny_Compiler
 
             PrintTokens();
 
-            //   PrintErrors();
+            treeView1.Nodes.Add(Parser.PrintParseTree(TinyCompiler.treeroot));
+
 
             PrintErrors();
         }
@@ -60,6 +61,9 @@ namespace Tiny_Compiler
         {
             textBox2.Clear();
             dataGridView1.Rows.Clear();
+            treeView1.Nodes.Clear();
+
+            TinyCompiler.TokenStream.Clear();
             TinyCompiler.tiny_Scanner.Tokens.Clear();
             Errors.Error_List.Clear();
         }

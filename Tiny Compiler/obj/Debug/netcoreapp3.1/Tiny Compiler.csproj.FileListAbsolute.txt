@@ -29,3 +29,18 @@ D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\
 D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
 D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
 D:\Programing\Visual Studio\Tiny Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.exe
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.deps.json
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.json
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.dev.json
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.pdb
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.AssemblyReference.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny_Compiler.Form1.resources
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.GenerateResource.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfoInputs.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfo.cs
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CoreCompileInputs.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
