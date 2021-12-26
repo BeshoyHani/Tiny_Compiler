@@ -468,31 +468,76 @@ namespace Tiny_Compiler
         }
 
 
-        private Node Equation()
+        private Node StartEquation()
         {
-
-            Node node = new Node("Equation");
+            Node node = new Node("StartEquation") , Temp_res;
+            int tmpIdx = InputPointer;
 
             if (check(Token_Class.LeftParentheses))
             {
                 node.Children.Add(match(Token_Class.LeftParentheses));
-                node.Children.Add(Equation());
-                node.Children.Add(match(Token_Class.RightParentheses));
-                node.Children.Add(EquationDash());
+                Temp_res = Term();
 
-                return node;
+                if (Temp_res != null)
+                {
+                    node.Children.Add(Temp_res);
+                    Temp_res = Arithmatic_Operator();
+
+                    if (Temp_res != null)
+                    {
+                        node.Children.Add(Temp_res);
+                        node.Children.Add(Equation());
+                        node.Children.Add(match(Token_Class.RightParentheses));
+
+                        return node;
+                    }
+                }
             }
 
-            Node res = Term();
-            if (res != null)
+            InputPointer = tmpIdx;
+
+            Temp_res = Term();
+            if (Temp_res != null)
             {
-                node.Children.Add(res);
-                node.Children.Add(EquationDash());
-                return node;
+                node.Children.Add(Temp_res);
+                Temp_res = Arithmatic_Operator();
+
+                if (Temp_res != null)
+                {
+                    node.Children.Add(Temp_res);
+                    node.Children.Add(Equation());
+                    return node;
+                }
             }
 
+            InputPointer = tmpIdx;
             return null;
         }
+         private Node Equation()
+         {
+
+             Node node = new Node("Equation");
+
+             if (check(Token_Class.LeftParentheses))
+             {
+                 node.Children.Add(match(Token_Class.LeftParentheses));
+                 node.Children.Add(Equation());
+                 node.Children.Add(match(Token_Class.RightParentheses));
+                 node.Children.Add(EquationDash());
+
+                 return node;
+             }
+
+             Node res = Term();
+             if (res != null)
+             {
+                 node.Children.Add(res);
+                 node.Children.Add(EquationDash());
+                 return node;
+             }
+
+             return null;
+         }
 
         private Node EquationDash()
         {
@@ -518,7 +563,7 @@ namespace Tiny_Compiler
                 return node;
             }
 
-            Node Equation_res = Equation();
+            Node Equation_res = StartEquation();
 
             if (Equation_res != null)
             {

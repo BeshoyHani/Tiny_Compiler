@@ -31,7 +31,7 @@ namespace Tiny_Compiler
 
             treeView1.Nodes.Add(Parser.PrintParseTree(TinyCompiler.treeroot));
 
-
+            treeView1.Nodes[0].ExpandAll();
             PrintErrors();
         }
 
