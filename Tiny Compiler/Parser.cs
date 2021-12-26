@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Tiny_Compiler
@@ -74,9 +70,9 @@ namespace Tiny_Compiler
 
             Node res = DataType();
 
-            if (res != null)
+            if (res != null && check(Token_Class.Main))
             {
-               
+
                 node.Children.Add(res);
                 node.Children.Add(match(Token_Class.Main));
                 node.Children.Add(match(Token_Class.LeftParentheses));
@@ -86,7 +82,7 @@ namespace Tiny_Compiler
             }
             InputPointer = temp_InputPointer;
 
-            return node;
+            return null;
         }
 
         public Node Function_Statement()
@@ -344,6 +340,7 @@ namespace Tiny_Compiler
             {
                 node.Children.Add(match(Token_Class.IF));
                 node.Children.Add(Condition_Statement());
+                node.Children.Add(match(Token_Class.Then));
                 node.Children.Add(Statements());
                 node.Children.Add(After_If());
                 return node;
@@ -372,7 +369,7 @@ namespace Tiny_Compiler
                 return node;
             }
             InputPointer = temp_InputPointer;
-            if (TokenStream[InputPointer].token_type == Token_Class.End)
+            if (check(Token_Class.End))
             {
                 node.Children.Add(match(Token_Class.End));
                 return node;
@@ -581,65 +578,60 @@ namespace Tiny_Compiler
 
         private Node Equation()
         {
+
             Node node = new Node("Equation");
 
-            Node res = Eq();
+            if (check(Token_Class.LeftParentheses))
+            {
+                node.Children.Add(match(Token_Class.LeftParentheses));
+                node.Children.Add(Equation());
+                node.Children.Add(match(Token_Class.RightParentheses));
+                node.Children.Add(EquationDash());
+
+                return node;
+            }
+
+            Node res = Term();
             if (res != null)
             {
                 node.Children.Add(res);
+                node.Children.Add(EquationDash());
+                return node;
             }
 
-            else if (check(Token_Class.LeftParentheses))
+            return null;
+        }
+
+        private Node EquationDash()
+        {
+            Node node = new Node("EquationDash");
+
+            Node res = Arithmatic_Operator();
+            if (res != null)
             {
-                node.Children.Add(match(Token_Class.LeftParentheses));
-                node.Children.Add(Eq());
-                node.Children.Add(match(Token_Class.RightParentheses));
-
+                node.Children.Add(res);
+                node.Children.Add(Term());
+                node.Children.Add(EquationDash());
             }
-            else
-                return null;
-
             return node;
         }
 
-        private Node Eq()
-        {
-            Node node = new Node("Eq");
-
-            Node Term_res = Term();
-
-            if (Term_res != null)
-            {
-                node.Children.Add(Term_res);
-                return node;
-            }
-
-            Node Equation_res = Equation();
-            if (Equation_res != null)
-            {
-                node.Children.Add(Equation_res);
-                node.Children.Add(Arithmatic_Operator());
-                node.Children.Add(Term());
-
-                return node;
-            }
-            return null;
-        }
         private Node Expression()
         {
             Node node = new Node("Expression");
 
-            Node Term_res = Term();
+            Node Equation_res = Equation();
+
 
             if (check(Token_Class.String))
                 node.Children.Add(match(Token_Class.String));
-            else if (Term_res != null)
-                node.Children.Add(Term_res);
+            else if (Equation_res != null)
+                node.Children.Add(Equation_res);
             else
             {
-                Node Equation_res = Equation();
-                if (Equation_res == null) return null;
-                node.Children.Add(Equation_res);
+                Node Term_res = Term();
+                if (Term_res == null) return null;
+                node.Children.Add(Term_res);
             }
 
             return node;
@@ -652,7 +644,7 @@ namespace Tiny_Compiler
             if (check(Token_Class.Identifier))
             {
                 node.Children.Add(match(Token_Class.Identifier));
-                node.Children.Add(match(Token_Class.Equal));
+                node.Children.Add(match(Token_Class.Assign));
                 node.Children.Add(Expression());
             }
             else
@@ -686,7 +678,7 @@ namespace Tiny_Compiler
 
             if (check(Token_Class.Comma))
             {
-                node.Children.Add(match(Token_Class.Semicolon));
+                node.Children.Add(match(Token_Class.Comma));
                 node.Children.Add(match(Token_Class.Identifier));
                 node.Children.Add(Optional_Assignment());
                 node.Children.Add(IdList());
