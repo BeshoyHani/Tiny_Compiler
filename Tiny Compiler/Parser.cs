@@ -39,7 +39,18 @@ namespace Tiny_Compiler
         public Node Program()
         {
             Node program = new Node("Program");
+
             int temp_InputPointer = InputPointer;
+
+
+            Node main_res = Main_Function();
+
+            if (main_res != null)
+            {
+                program.Children.Add(main_res);
+                return program;
+            }
+            InputPointer = temp_InputPointer;
 
 
             Node res = Function_Statement();
@@ -49,16 +60,6 @@ namespace Tiny_Compiler
                 program.Children.Add(res);
                 program.Children.Add(Program());
 
-                return program;
-            }
-
-            InputPointer = temp_InputPointer;
-
-            Node main_res = Main_Function();
-
-            if (main_res != null)
-            {
-                program.Children.Add(main_res);
                 return program;
             }
 
@@ -77,6 +78,7 @@ namespace Tiny_Compiler
 
             if (res != null)
             {
+               
                 node.Children.Add(res);
                 node.Children.Add(match(Token_Class.Main));
                 node.Children.Add(match(Token_Class.LeftParentheses));
@@ -284,89 +286,73 @@ namespace Tiny_Compiler
         private Node Repeat_Statement()
         {
             Node node = new Node("Repeat_Statement");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.Repeat);
-
-            if (res != null)
+            if (check(Token_Class.Repeat))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.Repeat));
                 node.Children.Add(Statements());
                 node.Children.Add(match(Token_Class.Until));
                 node.Children.Add(Condition_Statement());
                 return node;
             }
-            InputPointer = temp_InputPointer;
             return null;
         }
         private Node Condition()
         {
             Node node = new Node("Condition");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.Identifier);
-
-            if (res != null)
+            if (check(Token_Class.Identifier))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.Identifier));
                 node.Children.Add(Condition_Operator());
                 node.Children.Add(Term());
                 return node;
             }
-            InputPointer = temp_InputPointer;
+
             return null;
         }
         private Node Else_Statement()
         {
             Node node = new Node("Else_Statement");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.Else);
-
-            if (res != null)
+            if (check(Token_Class.Else))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.Else));
                 node.Children.Add(Statements());
                 node.Children.Add(match(Token_Class.End));
                 return node;
             }
-            InputPointer = temp_InputPointer;
+
             return null;
         }
         private Node Else_If_Statement()
         {
             Node node = new Node("Else_If_Statement");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.ElseIf);
 
-            if (res != null)
+            if (check(Token_Class.ElseIf))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.ElseIf));
                 node.Children.Add(Condition_Statement());
                 node.Children.Add(Statements());
                 node.Children.Add(After_If());
                 return node;
             }
-            InputPointer = temp_InputPointer;
             return null;
         }
         private Node If_Statement()
         {
             Node node = new Node("If_Statement");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.IF);
 
-            if (res != null)
+            if (check(Token_Class.IF))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.IF));
                 node.Children.Add(Condition_Statement());
                 node.Children.Add(Statements());
                 node.Children.Add(After_If());
                 return node;
             }
-            InputPointer = temp_InputPointer;
             return null;
         }
 
@@ -816,6 +802,7 @@ namespace Tiny_Compiler
 
                 else
                 {
+
                     Errors.Error_List.Add("Parsing Error: Expected "
                         + ExpectedToken.ToString() + " and " +
                         TokenStream[InputPointer].token_type.ToString() +

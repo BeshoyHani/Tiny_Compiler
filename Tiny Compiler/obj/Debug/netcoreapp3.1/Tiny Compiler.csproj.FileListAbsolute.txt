@@ -35,14 +35,6 @@ D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tin
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.dev.json
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.pdb
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny_Compiler.Form1.resources
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.GenerateResource.cache
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfoInputs.cache
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfo.cs
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CoreCompileInputs.cache
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CoreUtility.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Editor.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.LiveShare.dll
@@ -89,5 +81,13 @@ D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ru\
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.Validation.resources.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.Validation.resources.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny_Compiler.Form1.resources
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.GenerateResource.cache
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.GeneratedMSBuildEditorConfig.editorconfig
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfoInputs.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfo.cs
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CoreCompileInputs.cache
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CopyComplete
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
