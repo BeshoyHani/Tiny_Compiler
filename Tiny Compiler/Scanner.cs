@@ -36,8 +36,7 @@ namespace Tiny_Compiler
         {
             ReservedWords.Add("if", Token_Class.IF);
             ReservedWords.Add("else", Token_Class.Else);
-            ReservedWords.Add("elsef", Token_Class.ElseIf);
-            ReservedWords.Add("endIf", Token_Class.EndIf);
+            ReservedWords.Add("elseif", Token_Class.ElseIf);
             ReservedWords.Add("return", Token_Class.Return);
             ReservedWords.Add("write", Token_Class.Write);
             ReservedWords.Add("read", Token_Class.Read);
@@ -98,7 +97,7 @@ namespace Tiny_Compiler
 
                 else if (isDigit(CurrentChar))//If you read a digit
                 {
-                    while (j + 1 < SourceCode.Length && isDigit(SourceCode[j + 1]))
+                    while (j + 1 < SourceCode.Length && (isDigit(SourceCode[j + 1])) || SourceCode[j+1]=='.')
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
