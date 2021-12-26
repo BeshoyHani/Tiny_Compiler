@@ -36,8 +36,6 @@ namespace Tiny_Compiler
         {
             Node program = new Node("Program");
 
-            int temp_InputPointer = InputPointer;
-
 
             Node main_res = Main_Function();
 
@@ -46,14 +44,12 @@ namespace Tiny_Compiler
                 program.Children.Add(main_res);
                 return program;
             }
-            InputPointer = temp_InputPointer;
 
+            Node function_res = Function_Statement();
 
-            Node res = Function_Statement();
-
-            if (res != null)
+            if (function_res != null)
             {
-                program.Children.Add(res);
+                program.Children.Add(function_res);
                 program.Children.Add(Program());
 
                 return program;
@@ -104,31 +100,23 @@ namespace Tiny_Compiler
         private Node Function_Body()
         {
             Node node = new Node("Function_Body");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.LeftBraces);
-
-            if (res != null)
+            if (check(Token_Class.LeftBraces))
             {
-                node.Children.Add(res);
+                node.Children.Add(match(Token_Class.LeftBraces));
                 node.Children.Add(Statements());
                 node.Children.Add(Return_Statement());
                 node.Children.Add(match(Token_Class.RightBraces));
                 return node;
             }
 
-            InputPointer = temp_InputPointer;
-
             return null;
         }
-
-
 
 
         private Node Statements()
         {
             Node node = new Node("Statements");
-            int temp_InputPointer = InputPointer;
 
             Node res = Statement();
 
@@ -136,10 +124,7 @@ namespace Tiny_Compiler
             {
                 node.Children.Add(res);
                 node.Children.Add(Statements());
-
-                return node;
             }
-            InputPointer = temp_InputPointer;
             return node;
 
         }
@@ -147,7 +132,6 @@ namespace Tiny_Compiler
         private Node Statement()
         {
             Node node = new Node("Statement");
-            int temp_InputPointer = InputPointer;
 
             Node res = Read_Statement();
 
@@ -156,7 +140,7 @@ namespace Tiny_Compiler
                 node.Children.Add(res);
                 return node;
             }
-            InputPointer = temp_InputPointer;
+
             res = Write_Statement();
 
             if (res != null)
@@ -164,7 +148,31 @@ namespace Tiny_Compiler
                 node.Children.Add(res);
                 return node;
             }
-            InputPointer = temp_InputPointer;
+
+            res = Repeat_Statement();
+
+            if (res != null)
+            {
+                node.Children.Add(res);
+                return node;
+            }
+
+            res = Return_Statement();
+
+            if (res != null)
+            {
+                node.Children.Add(res);
+                return node;
+            }
+
+            res = If_Statement();
+
+            if (res != null)
+            {
+                node.Children.Add(res);
+                return node;
+            }
+
             res = Assignment_Statement();
 
             if (res != null)
@@ -173,7 +181,7 @@ namespace Tiny_Compiler
                 node.Children.Add(match(Token_Class.Semicolon));
                 return node;
             }
-            InputPointer = temp_InputPointer;
+
             res = Declaration_Statement();
 
             if (res != null)
@@ -181,53 +189,28 @@ namespace Tiny_Compiler
                 node.Children.Add(res);
                 return node;
             }
-            InputPointer = temp_InputPointer;
-            res = If_Statement();
 
-            if (res != null)
-            {
-                node.Children.Add(res);
-                return node;
-            }
-            InputPointer = temp_InputPointer;
-            res = Repeat_Statement();
-
-            if (res != null)
-            {
-                node.Children.Add(res);
-                return node;
-            }
-            InputPointer = temp_InputPointer;
-            res = Return_Statement();
-
-            if (res != null)
-            {
-                node.Children.Add(res);
-                return node;
-            }
-            InputPointer = temp_InputPointer;
             return null;
         }
 
         private Node Function_Declartion()
         {
             Node node = new Node("Function_Declartion");
-            int temp_InputPointer = InputPointer;
 
             Node res = DataType();
 
             if (res != null)
             {
                 node.Children.Add(res);
-                node.Children.Add(match(Token_Class.Identifier));
+                node.Children.Add(FunctionName());
                 node.Children.Add(match(Token_Class.LeftParentheses));
                 node.Children.Add(ParList());
                 node.Children.Add(match(Token_Class.RightParentheses));
                 return node;
             }
-            InputPointer = temp_InputPointer;
             return null;
         }
+
 
         private Node ParList()
         {
@@ -260,7 +243,6 @@ namespace Tiny_Compiler
         private Node Parameter()
         {
             Node node = new Node("Parameter");
-            int temp_InputPointer = InputPointer;
 
             Node res = DataType();
 
@@ -271,23 +253,10 @@ namespace Tiny_Compiler
 
                 return node;
             }
-            InputPointer = temp_InputPointer;
             return null;
         }
-        private Node Repeat_Statement()
-        {
-            Node node = new Node("Repeat_Statement");
 
-            if (check(Token_Class.Repeat))
-            {
-                node.Children.Add(match(Token_Class.Repeat));
-                node.Children.Add(Statements());
-                node.Children.Add(match(Token_Class.Until));
-                node.Children.Add(Condition_Statement());
-                return node;
-            }
-            return null;
-        }
+
         private Node Condition()
         {
             Node node = new Node("Condition");
@@ -378,47 +347,8 @@ namespace Tiny_Compiler
             return null;
         }
 
-        private Node Condition_Operator()
-        {
-            Node node = new Node("Condition_Operator");
-            if (TokenStream[InputPointer].token_type == Token_Class.LessThan)
-            {
-                node.Children.Add(match(Token_Class.LessThan));
-                return node;
-            }
-            if (TokenStream[InputPointer].token_type == Token_Class.GreaterThan)
-            {
-                node.Children.Add(match(Token_Class.GreaterThan));
-                return node;
-            }
-            if (TokenStream[InputPointer].token_type == Token_Class.Equal)
-            {
-                node.Children.Add(match(Token_Class.Equal));
-                return node;
-            }
-            if (TokenStream[InputPointer].token_type == Token_Class.NotEqual)
-            {
-                node.Children.Add(match(Token_Class.NotEqual));
-                return node;
-            }
-            return null;
-        }
-        private Node Boolean_Operator()
-        {
-            Node node = new Node("Boolean_Operator");
-            if (TokenStream[InputPointer].token_type == Token_Class.OR)
-            {
-                node.Children.Add(match(Token_Class.OR));
-                return node;
-            }
-            if (TokenStream[InputPointer].token_type == Token_Class.AND)
-            {
-                node.Children.Add(match(Token_Class.AND));
-                return node;
-            }
 
-            return null;
-        }
+
 
         private Node Condition_Statement()
         {
@@ -457,41 +387,21 @@ namespace Tiny_Compiler
             return node;
         }
 
-        private Node DataType()
-        {
-            Node node = new Node("DataType");
-
-            if (check(Token_Class.DataType_INT))
-                node.Children.Add(match(Token_Class.DataType_INT));
-
-            else if (check(Token_Class.DataType_Float))
-                node.Children.Add(match(Token_Class.DataType_Float));
-            else if (check(Token_Class.DataType_String))
-                node.Children.Add(match(Token_Class.DataType_String));
-            else
-                return null;
-            return node;
-        }
 
         private Node Function_Call()
         {
             Node node = new Node("Function_Call");
-            int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.Identifier);
 
-            if (res == null)
+            if (check(Token_Class.Identifier))
             {
-                InputPointer = temp_InputPointer;
-                return null;
+                node.Children.Add(match(Token_Class.Identifier));
+                node.Children.Add(match(Token_Class.LeftParentheses));
+                node.Children.Add(Arguments());
+                node.Children.Add(match(Token_Class.RightParentheses));
+                return node;
             }
-
-            node.Children.Add(res);
-            node.Children.Add(match(Token_Class.LeftParentheses));
-            node.Children.Add(Arguments());
-            node.Children.Add(match(Token_Class.RightParentheses));
-
-            return node;
+            return null;
         }
 
         private Node Arguments()
@@ -558,23 +468,6 @@ namespace Tiny_Compiler
             return node;
         }
 
-        private Node Arithmatic_Operator()
-        {
-            Node node = new Node("Arithmatic_Operator");
-
-            if (check(Token_Class.Plus))
-                node.Children.Add(match(Token_Class.Plus));
-            else if (check(Token_Class.Minus))
-                node.Children.Add(match(Token_Class.Minus));
-            else if (check(Token_Class.Multiply))
-                node.Children.Add(match(Token_Class.Multiply));
-            else if (check(Token_Class.Division))
-                node.Children.Add(match(Token_Class.Division));
-            else
-                return null;
-
-            return node;
-        }
 
         private Node Equation()
         {
@@ -620,56 +513,40 @@ namespace Tiny_Compiler
         {
             Node node = new Node("Expression");
 
-            Node Equation_res = Equation();
-
-
             if (check(Token_Class.String))
-                node.Children.Add(match(Token_Class.String));
-            else if (Equation_res != null)
-                node.Children.Add(Equation_res);
-            else
             {
-                Node Term_res = Term();
-                if (Term_res == null) return null;
-                node.Children.Add(Term_res);
+                node.Children.Add(match(Token_Class.String));
+                return node;
             }
 
-            return node;
+            Node Equation_res = Equation();
+
+            if (Equation_res != null)
+            {
+                node.Children.Add(Equation_res);
+                return node;
+            }
+
+            Node Term_res = Term();
+            if (Term_res != null)
+            {
+                node.Children.Add(Term_res);
+                return node;
+            }
+
+            return null;
         }
 
-        private Node Assignment_Statement()
+        private Node Optional_Assignment()
         {
-            Node node = new Node("Assignment_Statement");
+            Node node = new Node("Optional_Assignment");
 
-            if (check(Token_Class.Identifier))
+            if (check(Token_Class.Assign))
             {
-                node.Children.Add(match(Token_Class.Identifier));
                 node.Children.Add(match(Token_Class.Assign));
                 node.Children.Add(Expression());
             }
-            else
-                return null;
             return node;
-
-        }
-
-        private Node Declaration_Statement()
-        {
-            Node node = new Node("Declaration_Statement");
-
-            Node res = DataType();
-            if (res != null)
-            {
-                node.Children.Add(res);
-                node.Children.Add(match(Token_Class.Identifier));
-                node.Children.Add(Optional_Assignment());
-                node.Children.Add(IdList());
-                node.Children.Add(match(Token_Class.Semicolon));
-            }
-            else
-                return null;
-            return node;
-
         }
 
         private Node IdList()
@@ -687,18 +564,23 @@ namespace Tiny_Compiler
             return node;
         }
 
-        private Node Optional_Assignment()
+
+        //----------------------------------------Statements------------------------------------------------------
+
+        private Node Repeat_Statement()
         {
-            Node node = new Node("Optional_Assignment");
+            Node node = new Node("Repeat_Statement");
 
-            if (check(Token_Class.Assign))
+            if (check(Token_Class.Repeat))
             {
-                node.Children.Add(match(Token_Class.Assign));
-                node.Children.Add(Expression());
+                node.Children.Add(match(Token_Class.Repeat));
+                node.Children.Add(Statements());
+                node.Children.Add(match(Token_Class.Until));
+                node.Children.Add(Condition_Statement());
+                return node;
             }
-            return node;
+            return null;
         }
-
 
         private Node Write_Statement()
         {
@@ -733,6 +615,67 @@ namespace Tiny_Compiler
 
         }
 
+        private Node Return_Statement()
+        {
+            Node node = new Node("Return_Statement");
+
+
+            if (check(Token_Class.Return) == false) return null;
+
+            node.Children.Add(match(Token_Class.Return));
+            node.Children.Add(Expression());
+            node.Children.Add(match(Token_Class.Semicolon));
+
+            return node;
+        }
+
+        private Node Assignment_Statement()
+        {
+            Node node = new Node("Assignment_Statement");
+
+            if (check(Token_Class.Identifier) == false) return null;
+
+            node.Children.Add(match(Token_Class.Identifier));
+            node.Children.Add(match(Token_Class.Assign));
+            node.Children.Add(Expression());
+
+            return node;
+        }
+
+        private Node Declaration_Statement()
+        {
+            Node node = new Node("Declaration_Statement");
+
+            Node res = DataType();
+
+            if (res == null) return null;
+
+            node.Children.Add(res);
+            node.Children.Add(match(Token_Class.Identifier));
+            node.Children.Add(Optional_Assignment());
+            node.Children.Add(IdList());
+            node.Children.Add(match(Token_Class.Semicolon));
+
+            return node;
+        }
+        //----------------------------------------Terminal Rules -------------------------------------------------
+
+        private Node DataType()
+        {
+            Node node = new Node("DataType");
+
+            if (check(Token_Class.DataType_INT))
+                node.Children.Add(match(Token_Class.DataType_INT));
+
+            else if (check(Token_Class.DataType_Float))
+                node.Children.Add(match(Token_Class.DataType_Float));
+            else if (check(Token_Class.DataType_String))
+                node.Children.Add(match(Token_Class.DataType_String));
+            else
+                return null;
+            return node;
+        }
+
         private Node Read_Statement()
         {
             Node node = new Node("Read_Statement ");
@@ -746,21 +689,67 @@ namespace Tiny_Compiler
             return node;
         }
 
-        private Node Return_Statement()
+        private Node Arithmatic_Operator()
         {
-            Node node = new Node("Return_Statement");
+            Node node = new Node("Arithmatic_Operator");
 
+            if (check(Token_Class.Plus))
+                node.Children.Add(match(Token_Class.Plus));
+            else if (check(Token_Class.Minus))
+                node.Children.Add(match(Token_Class.Minus));
+            else if (check(Token_Class.Multiply))
+                node.Children.Add(match(Token_Class.Multiply));
+            else if (check(Token_Class.Division))
+                node.Children.Add(match(Token_Class.Division));
+            else
+                return null;
 
-            if (check(Token_Class.Return) == false) return null;
+            return node;
+        }
 
-
-            node.Children.Add(match(Token_Class.Return));
-            node.Children.Add(Expression());
-            node.Children.Add(match(Token_Class.Semicolon));
-
+        private Node Boolean_Operator()
+        {
+            Node node = new Node("Boolean_Operator");
+            if (check(Token_Class.OR))
+            {
+                node.Children.Add(match(Token_Class.OR));
+                return node;
+            }
+            if (check(Token_Class.AND))
+            {
+                node.Children.Add(match(Token_Class.AND));
+                return node;
+            }
 
             return null;
         }
+
+        private Node Condition_Operator()
+        {
+            Node node = new Node("Condition_Operator");
+
+            if (check(Token_Class.LessThan))
+                node.Children.Add(match(Token_Class.LessThan));
+
+            else if (check(Token_Class.GreaterThan))
+                node.Children.Add(match(Token_Class.GreaterThan));
+
+            else if (check(Token_Class.Equal))
+                node.Children.Add(match(Token_Class.Equal));
+
+            else if (check(Token_Class.NotEqual))
+                node.Children.Add(match(Token_Class.NotEqual));
+
+            else
+                return null;
+            return node;
+        }
+
+        private Node FunctionName()
+        {
+            return match(Token_Class.Identifier);
+        }
+
 
         public Node match(Token_Class ExpectedToken)
         {
