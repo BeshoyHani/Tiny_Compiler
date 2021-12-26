@@ -63,8 +63,6 @@ namespace Tiny_Compiler
                 return program;
             }
 
-            InputPointer = temp_InputPointer;
-
             return null;
         }
 
@@ -94,7 +92,6 @@ namespace Tiny_Compiler
         public Node Function_Statement()
         {
             Node node = new Node("Function_Statement");
-            int temp_InputPointer = InputPointer;
 
             Node res = Function_Declartion();
 
@@ -104,8 +101,6 @@ namespace Tiny_Compiler
                 node.Children.Add(Function_Body());
                 return node;
             }
-
-            InputPointer = temp_InputPointer;
 
             return null;
         }
