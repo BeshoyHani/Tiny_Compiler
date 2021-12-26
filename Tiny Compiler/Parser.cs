@@ -251,9 +251,9 @@ namespace Tiny_Compiler
         {
             Node node = new Node("ParListDash");
 
-            if (check(Token_Class.Semicolon))
+            if (check(Token_Class.Comma))
             {
-                node.Children.Add(match(Token_Class.Semicolon));
+                node.Children.Add(match(Token_Class.Comma));
                 node.Children.Add(Parameter());
                 node.Children.Add(ParListDash());
             }
@@ -523,7 +523,7 @@ namespace Tiny_Compiler
 
             int temp_InputPointer = InputPointer;
 
-            Node res = match(Token_Class.Semicolon);
+            Node res = match(Token_Class.Comma);
 
             if (res != null)
             {
@@ -669,6 +669,8 @@ namespace Tiny_Compiler
             if (res != null)
             {
                 node.Children.Add(res);
+                node.Children.Add(match(Token_Class.Identifier));
+                node.Children.Add(Optional_Assignment());
                 node.Children.Add(IdList());
                 node.Children.Add(match(Token_Class.Semicolon));
             }
@@ -682,42 +684,29 @@ namespace Tiny_Compiler
         {
             Node node = new Node("IdList");
 
-            Node res = AssignOrIdentifier();
-            if (res == null) return null;
-
-            node.Children.Add(res);
-            node.Children.Add(Ids());
-
-            return node;
-        }
-
-        private Node AssignOrIdentifier()
-        {
-            Node node = new Node("AssignOrIdentifier");
-
-            Node res = Assignment_Statement();
-            if (res != null)
-                node.Children.Add(res);
-            else if (check(Token_Class.Identifier))
-                node.Children.Add(match(Token_Class.Identifier));
-            else
-                return null;
-            return node;
-        }
-
-        private Node Ids()
-        {
-            Node node = new Node("Ids");
-
-            if (check(Token_Class.Semicolon))
+            if (check(Token_Class.Comma))
             {
                 node.Children.Add(match(Token_Class.Semicolon));
-                node.Children.Add(AssignOrIdentifier());
-                node.Children.Add(Ids());
+                node.Children.Add(match(Token_Class.Identifier));
+                node.Children.Add(Optional_Assignment());
+                node.Children.Add(IdList());
             }
 
             return node;
         }
+
+        private Node Optional_Assignment()
+        {
+            Node node = new Node("Optional_Assignment");
+
+            if (check(Token_Class.Assign))
+            {
+                node.Children.Add(match(Token_Class.Assign));
+                node.Children.Add(Expression());
+            }
+            return node;
+        }
+
 
         private Node Write_Statement()
         {
@@ -817,7 +806,7 @@ namespace Tiny_Compiler
 
         bool check(Token_Class ExpectedToken)
         {
-            if (ExpectedToken == TokenStream[InputPointer].token_type)
+            if (InputPointer < TokenStream.Count && ExpectedToken == TokenStream[InputPointer].token_type)
                 return true;
             else return false;
         }

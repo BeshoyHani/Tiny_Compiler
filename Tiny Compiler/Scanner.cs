@@ -151,7 +151,6 @@ namespace Tiny_Compiler
                 }
             }
 
-            TinyCompiler.TokenStream = Tokens;
 
         }
         void FindTokenClass(string Lex)
@@ -192,6 +191,10 @@ namespace Tiny_Compiler
             //Is it an undefined?
 
             Tokens.Add(Tok);
+            if(Tok.token_type!=Token_Class.Comment)
+                TinyCompiler.TokenStream.Add(Tok);
+
+
         }
 
 
