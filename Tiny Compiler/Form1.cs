@@ -37,6 +37,7 @@ namespace Tiny_Compiler
 
         void PrintTokens()
         {
+
             foreach (Token token in  TinyCompiler.tiny_Scanner.Tokens)
             {
                 dataGridView1.Rows.Add(token.lex, token.token_type);

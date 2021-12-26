@@ -14,7 +14,7 @@ public enum Token_Class
     Comment,
     Plus, Minus, Multiply, Division,
     AND, OR, Assign, Equal, LessThan, GreaterThan, NotEqual,
-    Identifier, Number
+    Identifier, Number, End, Main
 }
 
 namespace Tiny_Compiler
@@ -27,7 +27,7 @@ namespace Tiny_Compiler
 
     public class Scanner
     {
-     
+
         public List<Token> Tokens = new List<Token>();
         Dictionary<string, Token_Class> ReservedWords = new Dictionary<string, Token_Class>();
         Dictionary<string, Token_Class> Operators = new Dictionary<string, Token_Class>();
@@ -37,7 +37,7 @@ namespace Tiny_Compiler
             ReservedWords.Add("if", Token_Class.IF);
             ReservedWords.Add("else", Token_Class.Else);
             ReservedWords.Add("elsef", Token_Class.ElseIf);
-            ReservedWords.Add("end", Token_Class.EndIf);
+            ReservedWords.Add("endIf", Token_Class.EndIf);
             ReservedWords.Add("return", Token_Class.Return);
             ReservedWords.Add("write", Token_Class.Write);
             ReservedWords.Add("read", Token_Class.Read);
@@ -48,6 +48,8 @@ namespace Tiny_Compiler
             ReservedWords.Add("int", Token_Class.DataType_INT);
             ReservedWords.Add("float", Token_Class.DataType_Float);
             ReservedWords.Add("string", Token_Class.DataType_String);
+            ReservedWords.Add("end", Token_Class.End);
+            ReservedWords.Add("main", Token_Class.Main);
 
             Operators.Add(".", Token_Class.Dot);
             Operators.Add(";", Token_Class.Semicolon);
@@ -85,7 +87,7 @@ namespace Tiny_Compiler
 
                 if (isLetter(CurrentChar))//if you read a Letter
                 {
-                    while( j+1 <SourceCode.Length &&  (isDigit(SourceCode[j+1]) || isLetter(SourceCode[j+1]) ) )
+                    while (j + 1 < SourceCode.Length && (isDigit(SourceCode[j + 1]) || isLetter(SourceCode[j + 1])))
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
@@ -96,7 +98,7 @@ namespace Tiny_Compiler
 
                 else if (isDigit(CurrentChar))//If you read a digit
                 {
-                    while (j+1 < SourceCode.Length && isDigit(SourceCode[j+1]))
+                    while (j + 1 < SourceCode.Length && isDigit(SourceCode[j + 1]))
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
@@ -106,9 +108,9 @@ namespace Tiny_Compiler
 
                 }
 
-                else if(CurrentChar=='"')//If you read a string
+                else if (CurrentChar == '"')//If you read a string
                 {
-                    while (j + 1 < SourceCode.Length && SourceCode[j+1]!='\n')
+                    while (j + 1 < SourceCode.Length && SourceCode[j + 1] != '\n')
                     {
                         j++;
                         CurrentLexeme += SourceCode[j];
@@ -121,7 +123,7 @@ namespace Tiny_Compiler
 
                 }
 
-                else if(CurrentChar == '/' && j + 1 < SourceCode.Length && SourceCode[j + 1] == '*')//If you read a comment
+                else if (CurrentChar == '/' && j + 1 < SourceCode.Length && SourceCode[j + 1] == '*')//If you read a comment
                 {
                     while (j + 1 < SourceCode.Length)
                     {
@@ -135,7 +137,7 @@ namespace Tiny_Compiler
                     FindTokenClass(CurrentLexeme);
                 }
 
-                else if(isTwo_LetterOp(j, SourceCode, ':', '=') || isTwo_LetterOp(j, SourceCode, '&', '&') || isTwo_LetterOp(j, SourceCode, '|', '|')) //If two-leter operator
+                else if (isTwo_LetterOp(j, SourceCode, ':', '=') || isTwo_LetterOp(j, SourceCode, '&', '&') || isTwo_LetterOp(j, SourceCode, '|', '|')) //If two-leter operator
                 {
                     j++;
                     CurrentLexeme += SourceCode[j];
@@ -194,40 +196,45 @@ namespace Tiny_Compiler
 
 
 
-        bool isIdentifier(string lex){
+        bool isIdentifier(string lex)
+        {
             return new Regex("^[a-zA-Z]([a-zA-Z0-9])*$").IsMatch(lex);
         }
 
-        bool isNumber(string lex){
+        bool isNumber(string lex)
+        {
             return new Regex("^[0-9]+([.][0-9]+)?$").IsMatch(lex);
         }
 
-        bool isString(string lex){
+        bool isString(string lex)
+        {
             return new Regex("^[\"][^\"]*[\"]$").IsMatch(lex);
         }
 
         bool isComment(string lex)
         {
-            MessageBox.Show(lex);
             return new Regex(@"/\*[\s\S]*?\*/").IsMatch(lex);
             //@"^(/\*).*(\*\/)$"
         }
 
-        bool isWhiteSpace(char character){
+        bool isWhiteSpace(char character)
+        {
             return character == ' ' || character == '\r' || character == '\n' || character == '\t';
         }
 
-        bool isLetter(char character){
+        bool isLetter(char character)
+        {
             return (character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z');
         }
 
-        bool isDigit(char character){
+        bool isDigit(char character)
+        {
             return character >= '0' && character <= '9';
         }
 
         bool isTwo_LetterOp(int i, string str, char first, char second)
         {
-            return i + 1 < str.Length && str[i] == first && str[i + 1] == second; 
+            return i + 1 < str.Length && str[i] == first && str[i + 1] == second;
         }
     }
 }

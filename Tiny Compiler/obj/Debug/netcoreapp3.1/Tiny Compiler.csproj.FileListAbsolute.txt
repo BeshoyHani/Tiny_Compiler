@@ -35,7 +35,6 @@ D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tin
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.runtimeconfig.dev.json
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Tiny Compiler.pdb
-D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.AssemblyReference.cache
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny_Compiler.Form1.resources
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.GenerateResource.cache
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.AssemblyInfoInputs.cache
@@ -44,3 +43,51 @@ D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tin
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.dll
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.pdb
 D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.genruntimeconfig.cache
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CoreUtility.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Editor.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.LiveShare.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.LiveShare.LanguageServices.16.3.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.OLE.Interop.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Shell.Interop.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Text.Data.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Text.Logic.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Text.UI.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Text.UI.Wpf.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.Threading.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.Validation.resources.dll
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.GeneratedMSBuildEditorConfig.editorconfig
+D:\FCIS\4thYear\Compiler\Tiny_Compiler\Tiny Compiler\obj\Debug\netcoreapp3.1\Tiny Compiler.csproj.CopyComplete
